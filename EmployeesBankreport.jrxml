@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EmployeesBankreport" language="groovy" pageWidth="595" pageHeight="841" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8b2f7feb-7f49-44e4-8d35-02585a4b8f96">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="140"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="EmployeeBanks" uuid="3f5e51c3-d2ff-4e54-b43c-ec225b8a8a91">
+		<parameter name="bankname" class="java.lang.String" isForPrompting="false"/>
+		<parameter name="month" class="java.lang.String" isForPrompting="false"/>
+		<parameter name="year" class="java.lang.String" isForPrompting="false"/>
+		<queryString>
+			<![CDATA[SELECT * FROM employeeregistrationtable,paymenttable,banktable WHERE employeeregistrationtable.staffNo = paymenttable.staffNo AND employeeregistrationtable.branchsortcode = banktable.branchcode AND paymenttable.netsalary > '1000'AND banktable.bankname = $P{bankname}  AND paymenttable.month = $P{month} AND paymenttable.year = $P{year}]]>
+		</queryString>
+		<field name="staffNo" class="java.lang.Object"/>
+		<field name="firstName" class="java.lang.Object"/>
+		<field name="lastName" class="java.lang.Object"/>
+		<field name="pinNo" class="java.lang.Object"/>
+		<field name="gender" class="java.lang.Object"/>
+		<field name="marital" class="java.lang.Object"/>
+		<field name="email" class="java.lang.Object"/>
+		<field name="address" class="java.lang.Object"/>
+		<field name="city" class="java.lang.Object"/>
+		<field name="tel" class="java.lang.Object"/>
+		<field name="basicsalary" class="java.lang.Object"/>
+		<field name="status" class="java.lang.Object"/>
+		<field name="branchSortCode" class="java.lang.Object"/>
+		<field name="accountNumber" class="java.lang.Object"/>
+		<field name="nssfno" class="java.lang.Object"/>
+		<field name="nhifno" class="java.lang.Object"/>
+		<field name="department" class="java.lang.Object"/>
+		<field name="designation" class="java.lang.Object"/>
+		<field name="select" class="java.lang.Object"/>
+		<field name="idnumber" class="java.lang.Object"/>
+		<field name="paymentId" class="java.lang.Object"/>
+		<field name="Name" class="java.lang.Object"/>
+		<field name="datePay" class="java.lang.Object"/>
+		<field name="month" class="java.lang.Object"/>
+		<field name="year" class="java.lang.Object"/>
+		<field name="nssf" class="java.lang.Object"/>
+		<field name="tier1" class="java.lang.Object"/>
+		<field name="tier2" class="java.lang.Object"/>
+		<field name="nhif" class="java.lang.Object"/>
+		<field name="advance" class="java.lang.Object"/>
+		<field name="otherDeductions" class="java.lang.Object"/>
+		<field name="paye" class="java.lang.Object"/>
+		<field name="taxableAmount" class="java.lang.Object"/>
+		<field name="totalDeductions" class="java.lang.Object"/>
+		<field name="netSalary" class="java.lang.Object"/>
+		<field name="gross" class="java.lang.Object"/>
+		<field name="id" class="java.lang.Object"/>
+		<field name="bankname" class="java.lang.Object"/>
+		<field name="branchName" class="java.lang.Object"/>
+		<field name="branchCode" class="java.lang.Object"/>
+	</subDataset>
+	<parameter name="BANK_NAME" class="java.lang.String"/>
+	<parameter name="MONTH" class="java.lang.String"/>
+	<parameter name="YEAR" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM companytable,employeeregistrationtable,paymenttable,banktable WHERE employeeregistrationtable.staffNo = paymenttable.staffNo AND employeeregistrationtable.branchsortcode = banktable.branchcode AND paymenttable.netsalary > '1000' AND banktable.bankname = $P{BANK_NAME} AND paymenttable.month = $P{MONTH} AND paymenttable.year = $P{YEAR}]]>
+	</queryString>
+	<field name="id" class="java.lang.Object"/>
+	<field name="companyName" class="java.lang.Object"/>
+	<field name="address" class="java.lang.Object"/>
+	<field name="city" class="java.lang.Object"/>
+	<field name="tel" class="java.lang.Object"/>
+	<field name="email" class="java.lang.Object"/>
+	<field name="pin" class="java.lang.Object"/>
+	<field name="buildingname" class="java.lang.Object"/>
+	<field name="website" class="java.lang.Object"/>
+	<field name="office" class="java.lang.Object"/>
+	<field name="staffNo" class="java.lang.Object"/>
+	<field name="firstName" class="java.lang.Object"/>
+	<field name="lastName" class="java.lang.Object"/>
+	<field name="pinNo" class="java.lang.Object"/>
+	<field name="gender" class="java.lang.Object"/>
+	<field name="marital" class="java.lang.Object"/>
+	<field name="basicsalary" class="java.lang.Object"/>
+	<field name="status" class="java.lang.Object"/>
+	<field name="branchSortCode" class="java.lang.Object"/>
+	<field name="accountNumber" class="java.lang.Object"/>
+	<field name="nssfno" class="java.lang.Object"/>
+	<field name="nhifno" class="java.lang.Object"/>
+	<field name="department" class="java.lang.Object"/>
+	<field name="designation" class="java.lang.Object"/>
+	<field name="select" class="java.lang.Object"/>
+	<field name="idnumber" class="java.lang.Object"/>
+	<field name="paymentId" class="java.lang.Object"/>
+	<field name="Name" class="java.lang.Object"/>
+	<field name="datePay" class="java.lang.Object"/>
+	<field name="month" class="java.lang.Object"/>
+	<field name="year" class="java.lang.Object"/>
+	<field name="nssf" class="java.lang.Object"/>
+	<field name="tier1" class="java.lang.Object"/>
+	<field name="tier2" class="java.lang.Object"/>
+	<field name="nhif" class="java.lang.Object"/>
+	<field name="advance" class="java.lang.Object"/>
+	<field name="otherDeductions" class="java.lang.Object"/>
+	<field name="paye" class="java.lang.Object"/>
+	<field name="taxableAmount" class="java.lang.Object"/>
+	<field name="totalDeductions" class="java.lang.Object"/>
+	<field name="netSalary" class="java.lang.Object"/>
+	<field name="gross" class="java.lang.Object"/>
+	<field name="bankname" class="java.lang.Object"/>
+	<field name="branchName" class="java.lang.Object"/>
+	<field name="branchCode" class="java.lang.Object"/>
+	<variable name="Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{netSalary}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="166" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="143" width="549" height="20" uuid="e8872442-10cc-4bc9-b3d0-0d898384e0b8"/>
+				<text><![CDATA[-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="2" y="0" width="552" height="20" forecolor="#000000" uuid="02e81cbb-3f9d-4cb4-8afb-cd914e3344b0"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{companyName}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="222" y="20" width="143" height="67" uuid="02077c0c-faa4-41ef-86db-ed19b1893f73"/>
+				<imageExpression><![CDATA["IMG-20170217-WA0001.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="212" y="87" width="153" height="13" uuid="9befb609-e580-45f6-96b8-d2c6f64ad7a0"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PO BOX "+$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="100" width="153" height="14" uuid="e73b93e2-126b-4c77-abd9-5ce7e24ed7cc"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="114" width="153" height="14" uuid="5dcdcfe0-8ff2-4490-8510-07e63a53ddab"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TEL: "+$F{tel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="128" width="153" height="15" uuid="ab822cf0-342f-4e5d-8861-1bb374ff2124"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PIN: "+$F{pin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="150" width="171" height="14" uuid="f7210fa7-b10a-4f02-af6a-19b7b1534943"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{month}+" "+$F{year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="150" width="111" height="13" uuid="380c07eb-6acf-4c6f-9a1d-3f0d5d18cb20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date: "+$F{datePay}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<summary>
+		<band height="195">
+			<componentElement>
+				<reportElement key="table" style="table" x="15" y="21" width="527" height="155" uuid="b8737994-fe99-4926-ba7b-44c7fcfdd765"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="EmployeeBanks" uuid="65253de9-be1d-4ab3-8a94-df5f019ea282">
+						<datasetParameter name="bankname">
+							<datasetParameterExpression><![CDATA[$F{bankname}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="month">
+							<datasetParameterExpression><![CDATA[$F{month}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="year">
+							<datasetParameterExpression><![CDATA[$F{year}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="fd139d29-bab2-4dcb-811c-4718d3884ba8">
+						<jr:columnHeader style="table_CH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="16" uuid="3900fc4e-2f2c-4810-a761-af39e7381c94"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Staff No]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="97c72618-d27d-40fa-9e32-01497926797e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[""+$F{staffNo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="102" uuid="9f0c23c0-aeb1-4b8c-8d1d-e8b38031349a">
+						<jr:columnHeader style="table_CH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="102" height="16" uuid="8f7bd9c5-1680-4e52-86b7-daa29d17d092"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Staff Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="102" height="20" uuid="29e486e1-2ca6-4de9-95b9-1ea6fab36a0d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[""+$F{Name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="76" uuid="18a0cfd9-814a-406f-8441-a8d53b45b0f4">
+						<jr:columnHeader style="table_CH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="76" height="16" uuid="00c2bd44-5580-4537-a1f1-b82ecf10a992"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[ID Number]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="76" height="20" uuid="43dc07af-9b41-428a-8dec-8de7890c8796"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[""+$F{idnumber}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="00a25c01-6efe-494c-8626-28e40363892b">
+						<jr:columnHeader style="table_CH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="16" uuid="61e1e534-ffa9-4d72-ba76-624fafd5974e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Branch Code]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="9847aa2c-64c2-40bc-89de-642b5bb826d4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[""+$F{branchSortCode}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="cc298d46-9962-4c8b-a48b-7c8286e0c3dc">
+						<jr:columnHeader style="table_CH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="16" uuid="da03b1b1-b5ab-4827-8fdb-53cc66a2d055"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[A/C Number]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="555206d0-8e4b-413f-a248-39b7264b456b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[""+$F{accountNumber}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b2686099-a84b-477e-b98e-519fb7560367">
+						<jr:columnHeader style="table_CH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="16" uuid="3b8ffca3-876f-48ab-a544-4995dd7eda23"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Net Salary]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="0" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="772fd946-ef40-4c33-9c20-c5b66cde87d0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[""+$F{netSalary}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="429" y="178" width="100" height="11" uuid="2cd4d0de-fa60-475e-b7d3-4ede1a580ac0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="429" y="191" width="100" height="1" uuid="44aff5ee-b806-413a-a597-2c433b8b0fd7"/>
+			</line>
+			<line>
+				<reportElement x="429" y="177" width="100" height="1" uuid="6b29a13c-5570-4f81-aa3e-c9378e8b5d8e"/>
+			</line>
+			<line>
+				<reportElement x="429" y="188" width="100" height="1" uuid="2dab40da-fd6a-405b-abf0-1bfdfea30a82"/>
+			</line>
+			<textField>
+				<reportElement x="15" y="0" width="527" height="21" uuid="e85069ef-8738-42a1-9e94-bca0d587f2e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{bankname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

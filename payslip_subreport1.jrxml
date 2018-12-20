@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="payslip_subreport1" language="groovy" pageWidth="225" pageHeight="225" columnWidth="225" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8143fd04-1865-4bbc-8bab-e8f5ccd8f8d7">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="STAFFNO_DEDUCTIONS" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="MONTH_DEDUCTIONS" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="YEAR_DEDUCTIONS" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[SELECT * FROM deductionstable WHERE staffno = $P{STAFFNO_DEDUCTIONS} AND month = $P{MONTH_DEDUCTIONS} AND year = $P{YEAR_DEDUCTIONS}]]>
+	</queryString>
+	<field name="deductionId" class="java.lang.Object"/>
+	<field name="staffNo" class="java.lang.Object"/>
+	<field name="deductionName" class="java.lang.Object"/>
+	<field name="month" class="java.lang.Object"/>
+	<field name="year" class="java.lang.Object"/>
+	<field name="amount" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="82" height="11" uuid="fe063dd8-fdaa-4486-b075-6b21e869641c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{deductionName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="0" width="100" height="11" uuid="7800c353-8bd8-498f-a9d8-a184ce2f7ce0"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" :  "+$F{amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

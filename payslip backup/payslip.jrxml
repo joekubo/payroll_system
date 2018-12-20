@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="payslip" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f79528d7-78b5-4664-8beb-ad998c3a960a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="12"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/joe/Desktop/Payroll_System/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RECORD_ID" class="java.lang.String"/>
+	<parameter name="MONTH" class="java.lang.String"/>
+	<parameter name="YEAR" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM companytable,employeeregistrationtable,paymenttable,loantable WHERE employeeregistrationtable.staffNo = paymenttable.staffNo AND paymenttable.staffno = loantable.staffno AND paymenttable.staffNo = $P{RECORD_ID} AND paymenttable.month =  $P{MONTH} AND paymenttable.year = $P{YEAR} ORDER BY loantable.balance DESC]]>
+	</queryString>
+	<field name="id" class="java.lang.Object"/>
+	<field name="companyName" class="java.lang.Object"/>
+	<field name="address" class="java.lang.Object"/>
+	<field name="city" class="java.lang.Object"/>
+	<field name="tel" class="java.lang.Object"/>
+	<field name="email" class="java.lang.Object"/>
+	<field name="pin" class="java.lang.Object"/>
+	<field name="buildingname" class="java.lang.Object"/>
+	<field name="website" class="java.lang.Object"/>
+	<field name="office" class="java.lang.Object"/>
+	<field name="staffNo" class="java.lang.Object"/>
+	<field name="firstName" class="java.lang.Object"/>
+	<field name="lastName" class="java.lang.Object"/>
+	<field name="pinNo" class="java.lang.Object"/>
+	<field name="gender" class="java.lang.Object"/>
+	<field name="marital" class="java.lang.Object"/>
+	<field name="basicsalary" class="java.lang.Object"/>
+	<field name="status" class="java.lang.Object"/>
+	<field name="branchSortCode" class="java.lang.Object"/>
+	<field name="accountNumber" class="java.lang.Object"/>
+	<field name="nssfno" class="java.lang.Object"/>
+	<field name="nhifno" class="java.lang.Object"/>
+	<field name="department" class="java.lang.Object"/>
+	<field name="designation" class="java.lang.Object"/>
+	<field name="select" class="java.lang.Object"/>
+	<field name="paymentId" class="java.lang.Object"/>
+	<field name="Name" class="java.lang.Object"/>
+	<field name="datePay" class="java.lang.Object"/>
+	<field name="month" class="java.lang.Object"/>
+	<field name="year" class="java.lang.Object"/>
+	<field name="nssf" class="java.lang.Object"/>
+	<field name="tier1" class="java.lang.Object"/>
+	<field name="tier2" class="java.lang.Object"/>
+	<field name="nhif" class="java.lang.Object"/>
+	<field name="advance" class="java.lang.Object"/>
+	<field name="otherDeductions" class="java.lang.Object"/>
+	<field name="paye" class="java.lang.Object"/>
+	<field name="taxableAmount" class="java.lang.Object"/>
+	<field name="totalDeductions" class="java.lang.Object"/>
+	<field name="netSalary" class="java.lang.Object"/>
+	<field name="gross" class="java.lang.Object"/>
+	<field name="bal_cf" class="java.lang.Object"/>
+	<field name="paidLoan" class="java.lang.Object"/>
+	<field name="balance" class="java.lang.Object"/>
+	<field name="takenLoan" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="475">
+			<textField>
+				<reportElement x="55" y="1" width="176" height="16" forecolor="#000000" uuid="7fddca2c-b799-4fb1-bd4b-3c82a848ea9c"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{companyName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="63" width="141" height="14" forecolor="#000000" uuid="ce81698a-6849-4bf9-a0e2-1e60efee28e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["P.O BOX: "+$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="76" width="141" height="11" forecolor="#000000" uuid="451fb956-1826-4f7f-9738-f43bbae1c074"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="87" width="141" height="12" forecolor="#000000" uuid="ae01eaf7-5f7b-4578-97cf-590d55fa6374"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TEL: "+$F{tel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="117" width="133" height="12" forecolor="#000000" uuid="6b2afd54-dbee-4671-b37b-dc883f932a6e"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{month}+" "+$F{year}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="94" y="16" width="116" height="47" uuid="ca3af575-e450-41a1-80eb-ecf2171f3372"/>
+				<imageExpression><![CDATA["IMG-20170217-WA0001.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="374" y="16" width="116" height="47" uuid="c3871942-2011-4d6e-896a-9ffe5f7f821c"/>
+				<imageExpression><![CDATA["IMG-20170217-WA0001.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="289" y="108" width="266" height="13" uuid="9d89b3c7-b832-4bf2-9f9e-304f7dc92bb1"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[-------------------------------------------------------------------------------------------]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="415" y="117" width="140" height="12" forecolor="#000000" uuid="9c3bfa9d-8543-4b3d-a836-9a141dbb0e8b"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{month}+" "+$F{year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="1" width="176" height="16" forecolor="#000000" uuid="e40de1fe-0413-4021-b799-af3904d409b1"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{companyName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="279" y="1" width="1" height="128" forecolor="#C0C0C0" uuid="be362e5c-9694-4cac-b3ea-17fa64c39735"/>
+			</line>
+			<textField>
+				<reportElement x="69" y="98" width="141" height="12" uuid="4295c948-5ee6-4cda-bddb-3a3124524f8b"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{pin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="75" width="141" height="11" forecolor="#000000" uuid="7bfa6843-64e9-45a5-b97d-295a4bf8e986"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="63" width="141" height="13" forecolor="#000000" uuid="bd64fe51-41ee-445d-b53d-f6fcb5bc03e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["P.O BOX: "+$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="86" width="141" height="12" forecolor="#000000" uuid="5adf5a65-e4ce-44f5-9b4b-6d730b7f52ef"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TEL: "+$F{tel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="97" width="141" height="12" uuid="7d0921f5-116b-456b-bc09-b546d2438fd9"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{pin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="155" width="176" height="13" forecolor="#000000" uuid="89995298-21b1-475b-8d42-ff6151803a3e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BASIC SALARY            :  "+$F{basicsalary}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="225" width="160" height="12" forecolor="#000000" uuid="4a06deea-2d24-4443-add4-6308cc9277eb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["GROSS SALARY           : "+$F{gross}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="267" width="194" height="14" forecolor="#000000" uuid="12aa693f-a5a4-45be-82ce-f2edbce87136"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NHIF                              : "+$F{nhif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="281" width="194" height="13" forecolor="#000000" uuid="3a008d7f-e934-44a0-959c-64744f69fb04"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NSSF                             : "+$F{nssf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="294" width="194" height="16" forecolor="#000000" uuid="fd171af7-2253-4d97-b079-72eb12e8732a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ADVANCE                    : "+$F{advance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="159" y="225" width="120" height="12" forecolor="#000000" uuid="b149f159-419c-43ec-8e72-64bacf58cfa5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TAXABLE AMOUNT: "+$F{taxableAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="379" width="161" height="20" forecolor="#000000" uuid="15a04c56-1f24-4f07-90f1-535a4f72a84f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL DEDUCTIONS   : "+$F{totalDeductions}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="397" width="140" height="14" uuid="dfb7cfb8-4e9b-4692-a514-515b13ca42f2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NET SALARY: "+$F{netSalary}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="4" y="408" width="100" height="1" uuid="54edc280-fd41-4101-ae37-1bc2bc2d5ebd"/>
+			</line>
+			<line>
+				<reportElement x="4" y="410" width="100" height="1" uuid="0f611ab2-4e0a-405f-97dd-9e781fc5d61e"/>
+			</line>
+			<line>
+				<reportElement x="4" y="399" width="100" height="1" uuid="05a51abe-c794-4030-9c79-8622c83ae9d0"/>
+			</line>
+			<subreport>
+				<reportElement x="3" y="312" width="128" height="50" uuid="df481436-17b5-43d5-ab4d-de8b1ff1c029"/>
+				<subreportParameter name="MONTH_DEDUCTIONS">
+					<subreportParameterExpression><![CDATA[$F{month}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="STAFFNO_DEDUCTIONS">
+					<subreportParameterExpression><![CDATA[$F{staffNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="YEAR_DEDUCTIONS">
+					<subreportParameterExpression><![CDATA[$F{year}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["payslip_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="3" y="170" width="125" height="51" uuid="8f0041eb-0493-4900-8a64-9e59b79e63b7"/>
+				<subreportParameter name="YEAR_BENEFITS">
+					<subreportParameterExpression><![CDATA[$F{year}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MONTH_BENEFITS">
+					<subreportParameterExpression><![CDATA[$F{month}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="STAFFNO_BENEFITS">
+					<subreportParameterExpression><![CDATA[$F{staffNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["payslip_Benefits.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="2" y="142" width="164" height="13" forecolor="#000000" uuid="fdbe5a13-d43b-4c68-b94b-5fd884490559"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{firstName}+" "+$F{lastName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="129" width="164" height="14" forecolor="#000000" uuid="8b01eaae-64d4-425d-8d7d-ec05e3586879"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["STAFF NO: "+$F{staffNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="413" width="148" height="14" uuid="927717a3-d199-46ae-8687-8fcb2c1802d4"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LOAN BALANCE c/f:  "+$F{balance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="253" width="193" height="14" uuid="200bc5fe-d369-47cd-9cb7-e8b2e881b4a0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PAYE                            : "+$F{paye}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="279" y="129" width="1" height="269" forecolor="#C0C0C0" uuid="e52d225e-c8c6-4d2f-9ca1-4494e2e9c0fa"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="108" width="277" height="13" uuid="af6c7e7c-75a8-4a6c-a212-3067c0eae653"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[-------------------------------------------------------------------------------------------]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="292" y="294" width="194" height="16" forecolor="#000000" uuid="5187e68f-4d9a-492b-acfd-26cf369a8870"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ADVANCE                    : "+$F{advance}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="290" y="408" width="100" height="1" uuid="a3b2e237-22bf-46b2-adf3-230c4f75a1ff"/>
+			</line>
+			<line>
+				<reportElement x="290" y="410" width="100" height="1" uuid="70478ee7-842d-44c9-84f2-07ea6799c6b9"/>
+			</line>
+			<textField>
+				<reportElement x="286" y="379" width="161" height="20" forecolor="#000000" uuid="e20638bf-7351-414b-9099-0cd9bce8d38c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL DEDUCTIONS   : "+$F{totalDeductions}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="413" width="138" height="14" uuid="9e223a26-6f01-494e-8506-0e41481a64ef"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LOAN BALANCE c/f:  "+$F{balance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="289" y="281" width="194" height="13" forecolor="#000000" uuid="e4c7561c-d1e5-4661-9352-37c66d38b514"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NSSF                             : "+$F{nssf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="397" width="140" height="14" uuid="8619b779-445d-434a-b72a-4fe6de88bdc4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NET SALARY: "+$F{netSalary}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="289" y="312" width="128" height="50" uuid="07b0e636-89a3-46fc-8e68-f0a82c5e3f34"/>
+				<subreportParameter name="MONTH_DEDUCTIONS">
+					<subreportParameterExpression><![CDATA[$F{month}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="STAFFNO_DEDUCTIONS">
+					<subreportParameterExpression><![CDATA[$F{staffNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="YEAR_DEDUCTIONS">
+					<subreportParameterExpression><![CDATA[$F{year}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["payslip_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="287" y="225" width="160" height="12" forecolor="#000000" uuid="cdca65b2-0640-44ba-8f7a-4ad1b6b1c826"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["GROSS SALARY           : "+$F{gross}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="289" y="155" width="176" height="13" forecolor="#000000" uuid="b74c4b88-6a34-43b8-8e65-3ffb2f37f088"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BASIC SALARY            :  "+$F{basicsalary}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="290" y="399" width="100" height="1" uuid="09476e9f-e938-4882-982e-030afa59d98f"/>
+			</line>
+			<textField>
+				<reportElement x="289" y="267" width="194" height="14" forecolor="#000000" uuid="963baeb9-3588-412b-8380-0cf2fe2682ee"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NHIF                              : "+$F{nhif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="253" width="193" height="14" uuid="593c0b9a-da2c-4cc6-a9c4-a101e4f7e724"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PAYE                            : "+$F{paye}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="289" y="170" width="125" height="51" uuid="730df453-16f8-48c2-a46d-92f323d77aaf"/>
+				<subreportParameter name="YEAR_BENEFITS">
+					<subreportParameterExpression><![CDATA[$F{year}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MONTH_BENEFITS">
+					<subreportParameterExpression><![CDATA[$F{month}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="STAFFNO_BENEFITS">
+					<subreportParameterExpression><![CDATA[$F{staffNo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["payslip_Benefits.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="288" y="142" width="164" height="13" forecolor="#000000" uuid="823489f5-d18f-41a9-84ad-16c10f6725a2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{firstName}+" "+$F{lastName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="225" width="111" height="12" forecolor="#000000" uuid="f081ef57-b0e7-4650-a101-1277c1f159ac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TAXABLE AMOUNT: "+$F{taxableAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="129" width="164" height="14" forecolor="#000000" uuid="3de06150-b4bf-4927-a1df-b45c7e16372e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["STAFF NO: "+$F{staffNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="446" width="268" height="20" uuid="40dd8eb2-7942-4cd8-bdf3-9d1008517197"/>
+				<text><![CDATA[Sign: ----------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="446" width="268" height="20" uuid="7feffb1d-44fc-4fb9-9356-c0497b61b660"/>
+				<text><![CDATA[Sign: ----------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="237" width="80" height="16" uuid="1fafe7da-5a7b-420e-a682-15aee0e57e5e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DEDUCTIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="237" width="82" height="16" uuid="970d8064-b823-4fe9-b6a7-7f9e72ca4e7d"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DEDUCTIONS]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

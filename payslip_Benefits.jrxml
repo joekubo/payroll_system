@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="payslip_Benefits" language="groovy" pageWidth="225" pageHeight="225" columnWidth="225" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6aca64a3-1921-4384-8431-822a6a4cc9db">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="STAFFNO_BENEFITS" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="MONTH_BENEFITS" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="YEAR_BENEFITS" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[SELECT * FROM benefitstable WHERE staffno = $P{STAFFNO_BENEFITS} AND month = $P{MONTH_BENEFITS} AND year = $P{YEAR_BENEFITS}]]>
+	</queryString>
+	<field name="benefitId" class="java.lang.Object"/>
+	<field name="benefitName" class="java.lang.Object"/>
+	<field name="staffNo" class="java.lang.Object"/>
+	<field name="month" class="java.lang.Object"/>
+	<field name="year" class="java.lang.Object"/>
+	<field name="amount" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="86" height="11" uuid="889e0c95-1ae1-4e89-9bb4-a5638d5f1705"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{benefitName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="0" width="82" height="11" uuid="a4055fbf-de1a-4f09-9e76-1cd1ec41f8f0"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[":   "+$F{amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
