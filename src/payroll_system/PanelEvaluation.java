@@ -373,11 +373,11 @@ public class PanelEvaluation extends javax.swing.JPanel {
             }
         }
     }
-//-------------------------------------------------Loans-----------------------------------------------------------------------------------------
+//-------------------------------------------------Loans---------------------------------------------------------------------------------------------
     private void evaluateBalancebf(){
         try{
            String sql = "SELECT COALESCE(SUM(takenLoan),0),COALESCE(SUM(paidLoan),0) FROM loantable WHERE staffno = "
-                   + "'"+txtStaffNo.getText()+"'AND loantable.year = '"+comboYear.getSelectedItem().toString()+"'";
+                   + "'"+txtStaffNo.getText()+"'";
            pst = conn.prepareStatement(sql);
            rs = pst.executeQuery();
            if(rs.next()){
@@ -2988,7 +2988,6 @@ private void selectedRowAllEmployees(){
         String balcd = txtBal_cd.getText();
         balcd = balcd.trim();
         double Balcd = Double.parseDouble(balcd);
-
             if(Balcd < 0){
                 txtAddLoan.requestFocus();
               //txtDeductionAmount.setText("0.00");
